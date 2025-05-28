@@ -1,0 +1,15 @@
+version: '3'
+services:
+  research_assistant_network:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./storage:/app/storage
+      - ./logs:/app/logs
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - SEMANTIC_SCHOLAR_API_KEY=${SEMANTIC_SCHOLAR_API_KEY}
+      - BING_SEARCH_API_KEY=${BING_SEARCH_API_KEY}
+      - API_DEBUG=False
+    restart: unless-stopped
